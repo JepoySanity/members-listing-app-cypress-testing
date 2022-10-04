@@ -1,12 +1,12 @@
 describe('Loggin In - Basic Auth', () => {
 
-  const username = 'jepoysan27'
-  const password = 'jepoysan27'
+  beforeEach(()=>{
+    cy.visit(Cypress.env('baseurl'))
+  })
 
   Cypress.Commands.add('Login',()=>{
-    cy.visit('https://master.dhd7igftovw0h.amplifyapp.com/')
-    cy.get('input[name="username"]').type(username)
-    cy.get('input[name="password"]').type(password)
+    cy.get('input[name="username"]').type(Cypress.env('username'))
+    cy.get('input[name="password"]').type(Cypress.env('password'))
     cy.get('form').submit()
   })
 
