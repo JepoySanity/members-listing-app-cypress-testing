@@ -10,7 +10,7 @@ describe('Loggin In - Basic Auth', () => {
     cy.get('form').submit()
   })
 
-  it('login', () => {
+  it('login and logout', () => {
     cy.Login()
     cy.wait(8000)
     cy.contains('Logout').click()
