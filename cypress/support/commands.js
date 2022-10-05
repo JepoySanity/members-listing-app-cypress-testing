@@ -23,3 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+//command for logging in using env parameters
+Cypress.Commands.add('FillupLoginForm',()=>{
+    cy.get('input[name="username"]').type(Cypress.env('username'))
+    cy.get('input[name="password"]').type(Cypress.env('password'))
+    cy.get('form').submit()
+})
+
+//command for signing up using env parameters
+Cypress.Commands.add('FillupSignupForm',() => {
+    cy.get('input[name="username"]').type(Cypress.env('test_username'))
+    cy.get('input[name="password"]').type(Cypress.env('test_password'))
+    cy.get('input[name="confirm_password"]').type(Cypress.env('test_password'))
+    cy.get('input[name="email"]').type(Cypress.env('test_email'))
+    cy.wait(1000)
+    cy.get('form').submit()
+})
+
+Cypress.Commands.add('LogoutUser', () => {
+    cy.contains('Logout').click()
+})
