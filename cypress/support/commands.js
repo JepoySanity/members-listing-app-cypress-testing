@@ -41,6 +41,18 @@ Cypress.Commands.add('FillupSignupForm',() => {
     cy.get('form').submit()
 })
 
+//command for logging out users
 Cypress.Commands.add('LogoutUser', () => {
     cy.contains('Logout').click()
+})
+
+//command for toggling language from EN to JP
+Cypress.Commands.add('ToggleLang', () => {
+    cy.get('div[role="button"]').click()
+    cy.wait(1000)
+    cy.contains('日本語').click()
+    cy.wait(1000)
+    cy.get('div[role="button"]').click()
+    cy.wait(1000)
+    cy.contains('EN').click()
 })
