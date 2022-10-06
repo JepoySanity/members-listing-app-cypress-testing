@@ -60,8 +60,12 @@ Cypress.Commands.add('ToggleLang', () => {
 //command for creating new user
 Cypress.Commands.add('CreateUser', () => {
     cy.get('input[name="name"]').type('test only')
-    cy.get('div[role="button"]').click()
-    // cy.get('input[name="name"]').type('test only')
-    // cy.get('input[name="name"]').type('test only')
-    // cy.get('input[name="name"]').type('test only')
+    cy.get('div[id="status"]').click()
+    cy.contains('Active').click()
+    cy.get('input[name="email"]').type('test@gg.com')
+    cy.get('div[id="department"]').click()
+    cy.contains('Dev F').click()
+    cy.get('div[id="location"]').click()
+    cy.contains('Alabang').click()
+    cy.get('form').submit()
 })
