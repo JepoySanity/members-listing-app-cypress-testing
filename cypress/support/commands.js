@@ -56,3 +56,12 @@ Cypress.Commands.add('ToggleLang', () => {
     cy.wait(1000)
     cy.contains('EN').click()
 })
+
+//command for creating new user
+Cypress.Commands.add('CreateUser', () => {
+    cy.get('input[name="name"]').type('test only')
+    cy.get('div[role="button"]').click()
+    // cy.get('input[name="name"]').type('test only')
+    // cy.get('input[name="name"]').type('test only')
+    // cy.get('input[name="name"]').type('test only')
+})
