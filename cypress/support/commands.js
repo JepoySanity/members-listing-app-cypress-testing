@@ -69,3 +69,28 @@ Cypress.Commands.add('CreateUser', () => {
     cy.contains('Alabang').click()
     cy.get('form').submit()
 })
+
+//command for updating existing user
+Cypress.Commands.add('UpdateUser', () => {
+    cy.get('a').contains('Edit').click()
+    cy.get('input[name="name"]').clear()
+    cy.wait(500)
+    cy.get('input[name="name"]').type('update content')
+    cy.get('div[id="status"]').click()
+    cy.contains('Inactive').click()
+    cy.get('input[name="email"]').clear()
+    cy.wait(500)
+    cy.get('input[name="email"]').type('test@update.gg.com')
+    cy.get('div[id="department"]').click()
+    cy.contains('Dev G').click()
+    cy.get('div[id="location"]').click()
+    cy.contains('Makati').click()
+    cy.get('form').submit()
+})
+
+//command for deleting existing user
+Cypress.Commands.add('DeleteUser', () => {
+    cy.contains('Delete').click()
+    cy.wait(1000)
+    cy.contains('Proceed').click()
+})
