@@ -1,7 +1,7 @@
 describe('Loggin In - Basic Auth', () => {
 
   beforeEach(()=>{
-    cy.visit(Cypress.env('baseurl'))
+    cy.visit('/')
   })
 
   it('login and logout', () => {

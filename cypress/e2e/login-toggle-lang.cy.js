@@ -1,6 +1,6 @@
 describe('Login and toggle language', () => {
     beforeEach(()=>{
-        cy.visit(Cypress.env('baseurl'))
+      cy.visit('/')
     })
 
     it('login-toggle-lang', () => {

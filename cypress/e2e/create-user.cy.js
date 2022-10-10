@@ -1,7 +1,7 @@
 describe('Create user', () => {
 
     beforeEach(() => {
-        cy.visit(Cypress.env('baseurl'))
+        cy.visit('/')
     })
 
     it('create-user', () => {
