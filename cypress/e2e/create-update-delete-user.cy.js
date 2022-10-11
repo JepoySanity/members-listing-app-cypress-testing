@@ -1,4 +1,4 @@
-describe('Create user and Update after', () => {
+describe('Create user then Update then Delete', () => {
 
     beforeEach(() => {
         cy.visit(Cypress.env('baseurl'))
@@ -18,4 +18,5 @@ describe('Create user and Update after', () => {
         cy.wait(4000)
         cy.DeleteUser()
     })
+    
 })
