@@ -1,6 +1,6 @@
 describe('Signup user', () => {
     beforeEach(()=>{
-        cy.visit(Cypress.env('baseurl'))
+      cy.visit('/')
     })
 
     it('signup', () => {
