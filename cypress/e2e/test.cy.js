@@ -1,36 +1,58 @@
 describe('Authentication, i18n and CRUD tests', () => {
-    beforeEach(() => {
-        cy.visit('/')
-    })
+
+    Cypress.on('uncaught:exception', (err, runnable) => {
+        return false;
+    });
 
     //Authentication test
     it('test login and logout', () => {
-        cy.FillupLoginForm()
+        cy.visit('/')
+        cy.Login()
         cy.wait(8000)
         cy.LogoutUser()
     })
 
-    //i18n test
+    //Relogin
+    it('login', () => {
+        cy.visit('/')
+        cy.Login()
+        cy.wait(8000)
+    })
+
+    //i18n toggle language to JP
     it('test toggle language', () => {
-        cy.FillupLoginForm()
-        cy.wait(5000)
-        cy.ToggleLang()
-        cy.wait(1000)
-        cy.LogoutUser()
+        cy.ToggleLang('日本語')
     })
 
     //CRUD test
     it('test CRUD functionality', () => {
-        cy.FillupLoginForm()
-        cy.wait(6000)
-        cy.contains('New').click()
+        cy.get('a[id="create-new"]').click()
         cy.CreateUser()
         cy.wait(4000)
-        cy.contains('Back').click()
+        cy.get('a[id="back-button"]').click()
         cy.wait(4000)
         cy.UpdateUser()
         cy.wait(4000)
-        cy.contains('Back').click()
+        cy.get('a[id="back-button"]').click()
+        cy.wait(4000)
+        cy.DeleteUser()
+    })
+
+    //i18n toggle language to EN
+    it('test toggle language', () => {
+        cy.ToggleLang('日本語')
+    })
+
+    //CRUD test
+    it('test CRUD functionality', () => {
+        cy.get('a[id="create-new"]').click()
+        cy.CreateUser()
+        cy.wait(4000)
+        cy.get('a[id="back-button"]').click()
+        cy.wait(4000)
+        cy.UpdateUser()
+        cy.wait(4000)
+        cy.get('a[id="back-button"]').click()
         cy.wait(4000)
         cy.DeleteUser()
     })

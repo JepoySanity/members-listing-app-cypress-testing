@@ -25,73 +25,162 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 //command for logging in using env parameters
-Cypress.Commands.add('FillupLoginForm',()=>{
-    cy.get('input[name="username"]').type(Cypress.env('username'))
-    cy.get('input[name="password"]').type(Cypress.env('password'))
-    cy.get('form').submit()
+Cypress.Commands.add('Login',()=>{
+    cy.get('input[name="username"]')
+        .type(Cypress.env('username'))
+        .should('have.value',Cypress.env('username'))
+
+    cy.get('input[name="password"]')
+        .type(Cypress.env('password'))
+        .should('have.value',Cypress.env('password'))
+
+    cy.get('form')
+        .submit()
 })
 
 //command for signing up using env parameters
 Cypress.Commands.add('FillupSignupForm',() => {
-    cy.get('input[name="username"]').type(Cypress.env('test_username'))
-    cy.get('input[name="password"]').type(Cypress.env('test_password'))
-    cy.get('input[name="confirm_password"]').type(Cypress.env('test_password'))
-    cy.get('input[name="email"]').type(Cypress.env('test_email'))
+    cy.get('input[name="username"]')
+        .type(Cypress.env('test_username'))
+        .should('have.value',Cypress.env('test_username'))
+
+    cy.get('input[name="password"]')
+        .type(Cypress.env('test_password'))
+        .should('have.value',Cypress.env('test_password'))
+
+    cy.get('input[name="confirm_password"]')
+        .type(Cypress.env('test_password'))
+        .should('have.value',Cypress.env('test_password'))
+
+    cy.get('input[name="email"]')
+        .type(Cypress.env('test_email'))
+        .should('have.value',Cypress.env('test_email'))
+
     cy.wait(1000)
-    cy.get('form').submit()
+
+    cy.get('form')
+        .submit()
 })
 
 //command for logging out users
 Cypress.Commands.add('LogoutUser', () => {
-    cy.contains('Logout').click()
+    cy.contains('Logout')
+        .click()
 })
 
 //command for toggling language from EN to JP
-Cypress.Commands.add('ToggleLang', () => {
-    cy.get('div[role="button"]').click()
+Cypress.Commands.add('ToggleLang', (lang) => {
+    cy.get('div[role="button"]')
+        .click()
+
     cy.wait(1000)
-    cy.contains('日本語').click()
+
+    if (lang == 'EN') {
+        cy.contains('EN')
+        .click()
+    } else {
+        cy.contains('日本語')
+        .click()
+    }
+
     cy.wait(1000)
-    cy.get('div[role="button"]').click()
-    cy.wait(1000)
-    cy.contains('EN').click()
+
+    // cy.get('div[role="button"]')
+    //     .click()
+
+    // cy.wait(1000)
+
+    // cy.contains('EN')
+    //     .click()
 })
 
 //command for creating new user
 Cypress.Commands.add('CreateUser', () => {
-    cy.get('input[name="name"]').type('test only')
-    cy.get('div[id="status"]').click()
-    cy.contains('Active').click()
-    cy.get('input[name="email"]').type('test@gg.com')
-    cy.get('div[id="department"]').click()
-    cy.contains('Dev F').click()
-    cy.get('div[id="location"]').click()
-    cy.contains('Alabang').click()
-    cy.get('form').submit()
+    cy.get('input[name="name"]')
+        .type('test only')
+        .should('have.value','test only')
+
+    cy.get('div[id="status"]')
+        .click()
+
+    cy.contains('Active')
+        .click()
+
+    cy.get('input[name="email"]')
+        .type('test@gg.com')
+        .should('have.value','test@gg.com')
+
+    cy.get('div[id="department"]')
+        .click()
+
+    cy.contains('Dev F')
+        .click()
+
+    cy.get('div[id="location"]')
+        .click()
+
+    cy.contains('Alabang')
+        .click()
+
+    cy.get('form')
+        .submit()
 })
 
 //command for updating existing user
 Cypress.Commands.add('UpdateUser', () => {
-    cy.get('a').contains('Edit').click()
+    cy.get('a')
+        .contains('Edit')
+        .click()
+
     cy.wait(2000)
-    cy.get('input[name="name"]').clear()
+
+    cy.get('input[name="name"]')
+        .clear()
+
     cy.wait(500)
-    cy.get('input[name="name"]').type('update content')
-    cy.get('div[id="status"]').click()
-    cy.contains('Inactive').click()
-    cy.get('input[name="email"]').clear()
+
+    cy.get('input[name="name"]')
+        .type('update content')
+        .should('have.value','update content')
+
+    cy.get('div[id="status"]')
+        .click()
+
+    cy.contains('Inactive')
+        .click()
+
+    cy.get('input[name="email"]')
+        .clear()
+
     cy.wait(500)
-    cy.get('input[name="email"]').type('test@update.gg.com')
-    cy.get('div[id="department"]').click()
-    cy.contains('Dev G').click()
-    cy.get('div[id="location"]').click()
-    cy.contains('Makati').click()
-    cy.get('form').submit()
+
+    cy.get('input[name="email"]')
+        .type('test@rocket.gg.com')
+        .should('have.value','test@rocket.gg.com')
+
+    cy.get('div[id="department"]')
+        .click()
+
+    cy.contains('Dev G')
+        .click()
+
+    cy.get('div[id="location"]')
+        .click()
+
+    cy.contains('Makati')
+        .click()
+
+    cy.get('form')
+        .submit()
 })
 
 //command for deleting existing user
 Cypress.Commands.add('DeleteUser', () => {
-    cy.contains('Delete').click()
+    cy.contains('Delete')
+        .click()
+
     cy.wait(1000)
-    cy.contains('Proceed').click()
+
+    cy.contains('Proceed')
+        .click()
 })
