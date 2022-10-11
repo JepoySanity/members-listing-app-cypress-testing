@@ -1,7 +1,7 @@
 describe('Create user then Update then Delete', () => {
 
     beforeEach(() => {
-        cy.visit(Cypress.env('baseurl'))
+        cy.visit('/')
     })
 
     it('create-user-then-update', () => {
