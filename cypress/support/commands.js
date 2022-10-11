@@ -73,6 +73,7 @@ Cypress.Commands.add('CreateUser', () => {
 //command for updating existing user
 Cypress.Commands.add('UpdateUser', () => {
     cy.get('a').contains('Edit').click()
+    cy.wait(2000)
     cy.get('input[name="name"]').clear()
     cy.wait(500)
     cy.get('input[name="name"]').type('update content')
