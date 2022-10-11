@@ -73,7 +73,7 @@ Cypress.Commands.add('ToggleLang', (lang) => {
     cy.get('div[role="button"]')
         .click()
 
-    cy.wait(1000)
+    cy.wait(500)
 
     if (lang == 'EN') {
         cy.contains('EN')
@@ -82,16 +82,6 @@ Cypress.Commands.add('ToggleLang', (lang) => {
         cy.contains('日本語')
         .click()
     }
-
-    cy.wait(1000)
-
-    // cy.get('div[role="button"]')
-    //     .click()
-
-    // cy.wait(1000)
-
-    // cy.contains('EN')
-    //     .click()
 })
 
 //command for creating new user
@@ -128,8 +118,8 @@ Cypress.Commands.add('CreateUser', () => {
 
 //command for updating existing user
 Cypress.Commands.add('UpdateUser', () => {
-    cy.get('a')
-        .contains('Edit')
+    cy.get('a[id="edit-button"]')
+        .first()
         .click()
 
     cy.wait(2000)
@@ -176,11 +166,12 @@ Cypress.Commands.add('UpdateUser', () => {
 
 //command for deleting existing user
 Cypress.Commands.add('DeleteUser', () => {
-    cy.contains('Delete')
+    cy.get('button[id="delete-button"]')
+        .first()
         .click()
 
     cy.wait(1000)
 
-    cy.contains('Proceed')
+    cy.get('button[id="proceed-button"]')
         .click()
 })
