@@ -13,6 +13,7 @@ describe('Authentication, i18n and CRUD tests', () => {
         cy.LogoutUser()
     })
 
+    //Toggle language test
     it('toggle language', () => {
         cy.visit('/')
         cy.wait(1000)
@@ -61,24 +62,4 @@ describe('Authentication, i18n and CRUD tests', () => {
         cy.wait(2000)
         cy.DeleteUser()
     })
-
-        // //i18n toggle language to JP
-        // it('test toggle language', () => {
-            
-        // })
-    
-        // //CRUD test
-        // it('test CRUD functionality', () => {
-
-        // })
-    
-        // //i18n toggle language to EN
-        // it('test toggle language', () => {
-           
-        // })
-    
-        // //CRUD test
-        // it('test CRUD functionality', () => {
-
-        // })
 })
